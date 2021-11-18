@@ -32,6 +32,9 @@ class QueryBuilder
     /** @var array */
     private $sort = [];
 
+    /** @var array */
+    private $fields = [];
+
     public function setSource($source): self
     {
         $this->source = $source;
@@ -88,6 +91,14 @@ class QueryBuilder
         return $this;
     }
 
+    public function setFields(array $fields)
+    {
+        if (!empty($this->fields)) {
+            array_merge($this->fields, $fields);
+        }
+        $this->fields = $fields;
+    }
+
     public function build(): array
     {
         $query = [
@@ -130,6 +141,10 @@ class QueryBuilder
             foreach ($this->sort as $sort => $config) {
                 $query['body']['sort'][$sort] = $config;
             }
+        }
+
+        if (!empty($this->fields)) {
+            $query['body']['fields'] = $this->fields;
         }
 
         return $query;
