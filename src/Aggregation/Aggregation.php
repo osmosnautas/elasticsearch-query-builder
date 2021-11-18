@@ -2,6 +2,8 @@
 
 namespace Erichard\ElasticQueryBuilder\Aggregation;
 
+use Erichard\ElasticQueryBuilder\Query\MultiTermQuery;
+
 abstract class Aggregation
 {
     /** @var string */
@@ -92,5 +94,10 @@ abstract class Aggregation
     public static function topHits(string $name): TopHitsAggregation
     {
         return new TopHitsAggregation($name);
+    }
+
+    public static function multiterm(string $name): MultiTermQuery
+    {
+        return new MultiTermQuery($name);
     }
 }
