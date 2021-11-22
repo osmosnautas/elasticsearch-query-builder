@@ -2,7 +2,9 @@
 
 namespace Erichard\ElasticQueryBuilder\Query;
 
-class MultiTermQuery implements QueryInterface
+use Erichard\ElasticQueryBuilder\Aggregation\Aggregation;
+
+class MultiTermQuery extends Aggregation
 {
     /** @var  */
     private $field;
