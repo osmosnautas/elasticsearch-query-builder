@@ -8,7 +8,7 @@ class MultiTermQuery implements QueryInterface
     private $field;
 
     /** @var  */
-    private $terms;
+    private $terms = [];
 
     /** @var  */
     private $size;
