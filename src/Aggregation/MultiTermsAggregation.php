@@ -88,14 +88,17 @@ class MultiTermsAggregation extends Aggregation
             'field' => $this->field
         ];
 
-        return [
-            'multi_terms' => [
-                'terms' => $this->terms,
-                'size' => $this->size
-            ],
-            'aggs' => [
-                $this->aggregation->getName() => $this->aggregation->build()
-            ]
+        $multiterm['multi_terms'] = [
+            'terms' => $this->terms,
+            'size' => $this->size
         ];
+
+        if (!is_null($this->aggregation)) {
+            $multiterm['aggs'] = [
+                $this->aggregation->getName() => $this->aggregation->build()
+            ];
+        }
+
+        return $multiterm;
     }
 }
