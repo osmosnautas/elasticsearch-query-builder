@@ -92,6 +92,9 @@ class MultiTermsAggregation extends Aggregation
             'multi_terms' => [
                 'terms' => $this->terms,
                 'size' => $this->size
+            ],
+            'aggs' => [
+                $this->aggregation->getName() => $this->aggregation->build()
             ]
         ];
     }
