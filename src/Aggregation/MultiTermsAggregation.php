@@ -4,6 +4,8 @@ namespace Erichard\ElasticQueryBuilder\Aggregation;
 
 class MultiTermsAggregation extends Aggregation
 {
+    /** @var  */
+    private $aggregation;
 
     /** @var  */
     private $field;
@@ -13,6 +15,13 @@ class MultiTermsAggregation extends Aggregation
 
     /** @var  */
     private $size;
+
+    public function setAggregation(Aggregation $aggregation)
+    {
+        $this->aggregation = $aggregation;
+
+        return $this;
+    }
 
     /**
      * @return mixed
