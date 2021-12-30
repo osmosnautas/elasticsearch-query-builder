@@ -14,7 +14,7 @@ class NestedQuery implements QueryInterface
         return $this;
     }
 
-    public function setQuery(Query $query)
+    public function setQuery(QueryInterface $query)
     {
         $this->query = $query;
 
