@@ -21,6 +21,11 @@ class NestedQuery implements QueryInterface
         return $this;
     }
 
+    public function isEmpty(): bool
+    {
+        return empty($this->path);
+    }
+
     public function build(): array
     {
         return [
